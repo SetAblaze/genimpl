@@ -37,13 +37,12 @@ int countTerms(int t, int rotl, std::unordered_map<std::pair<int, int>, int, Pai
     return terms_Wt_A + terms_Wt_B + terms_Wt_C + terms_Wt_D;
 }
 
-int main() {
-    int t = 20; // The value of t for W27
+int getTerms(int t, int a, int b, int c, int d) {
     
     std::unordered_map<std::pair<int, int>, int, PairHash, PairEqual> hmap;
 
     // Call the function to count the terms involved in W27 for SHA-256
-    int terms = countTerms(t, 0, hmap, 6144, 1, 1, 16777216);
+    int terms = countTerms(t, 0, hmap, a, b, c, d);
     int res = 0;
     
     for (const auto& entry : hmap) {
@@ -56,10 +55,9 @@ int main() {
                 res++; 
             }
         }
-        std::cout << "Key: (" << key.first << ", " << (key.second) << "), Value: " << value << std::endl;
     }
     
-    std::cout<<"Terms in Wt: "<<res;
 
-    return 0;
+    return res;
 }
+
